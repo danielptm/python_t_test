@@ -4,6 +4,7 @@
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import csv
 import numpy as np
+from scipy import stats
 
 csv_file1 = 'data1.csv'
 csv_file2 = 'data2.csv'
@@ -29,14 +30,34 @@ def read_csv(file):
 def create_np_array_for_column(col, data):
     new_arr = []
     for d in data:
-        new_arr.append(d[col])
+        new_arr.append(int(d[col]))
     return np.array(new_arr)
+
+def do_test_for_groups(group1, group2):
+    t_stat, p_value = stats.ttest_ind(group1, group2)
+
+    # Interpret the results:
+    alpha = 0.05
+    if p_value < alpha:
+        print(
+            "Reject the null hypothesis")
+    else:
+        print(
+            "Fail to reject the null hypothesis")
+
 
 def print_hi(name):
     rows1 = read_csv(csv_file1)
-    rows2 = read_csv(csv_file2)
     np1 = create_np_array_for_column(5, rows1)
+
+    rows2 = read_csv(csv_file2)
     np2 = create_np_array_for_column(5, rows2)
+
+    do_test_for_groups(np1, np2)
+
+
+
+
 
 
 # Press the green button in the gutter to run the script.
