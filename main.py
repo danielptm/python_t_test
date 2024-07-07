@@ -38,6 +38,8 @@ def do_test_for_groups(group1, group2):
 
     # Interpret the results:
     alpha = 0.05
+    print("pvalue: ")
+    print(p_value)
     if p_value < alpha:
         print(
             "Reject the null hypothesis")
@@ -48,16 +50,22 @@ def do_test_for_groups(group1, group2):
 
 def print_hi(name):
     rows1 = read_csv(csv_file1)
-    np1 = create_np_array_for_column(5, rows1)
-
     rows2 = read_csv(csv_file2)
-    np2 = create_np_array_for_column(5, rows2)
 
+    # First question
+    np1 = create_np_array_for_column(4, rows1)
+    np2 = create_np_array_for_column(4, rows2)
     do_test_for_groups(np1, np2)
 
+    # Second question
+    np1 = create_np_array_for_column(5, rows1)
+    np2 = create_np_array_for_column(5, rows2)
+    do_test_for_groups(np1, np2)
 
-
-
+    # Third question
+    np1 = create_np_array_for_column(6, rows1)
+    np2 = create_np_array_for_column(6, rows2)
+    do_test_for_groups(np1, np2)
 
 
 # Press the green button in the gutter to run the script.
