@@ -30,7 +30,12 @@ def read_csv(file):
 def create_np_array_for_column(col, data):
     new_arr = []
     for d in data:
-        new_arr.append(int(d[col]))
+        # if d[1] == "Male":
+        #     new_arr.append(int(d[col]))
+        # if d[3] != "Several times per week":
+        #     new_arr.append(int(d[col]))
+        if d[0] != "36 to 40 years old":
+            new_arr.append(int(d[col]))
     return np.array(new_arr)
 
 def do_test_for_groups(group1, group2):
