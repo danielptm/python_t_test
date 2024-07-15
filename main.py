@@ -3,6 +3,8 @@
 # Press ⌃R to execute it or replace it with your code.
 # Press Double ⇧ to search everywhere for classes, files, tool windows, actions, and settings.
 import csv
+import statistics
+
 import numpy as np
 from scipy import stats
 
@@ -36,6 +38,7 @@ def create_np_array_for_column(col, data):
         #     new_arr.append(int(d[col]))
         if d[0] != "36 to 40 years old":
             new_arr.append(int(d[col]))
+        # new_arr.append(int(d[col]))
     return np.array(new_arr)
 
 def do_test_for_groups(group1, group2):
@@ -52,6 +55,24 @@ def do_test_for_groups(group1, group2):
         print(
             "Fail to reject the null hypothesis")
 
+def get_mean_for_col(col, rows):
+    arr = []
+    for r in rows:
+        arr.append(int(r[col]))
+    print("mean for col: " + str(col))
+    print(statistics.mean(arr))
+    return statistics.mean(arr)
+
+
+import statistics
+
+def get_std_for_col(col, rows):
+    arr = []
+    for r in rows:
+        arr.append(int(r[col]))
+    print("std for col: " + str(col))
+    print(statistics.stdev(arr))
+    return statistics.stdev(arr)
 
 def print_hi(name):
     rows1 = read_csv(csv_file1)
@@ -59,17 +80,47 @@ def print_hi(name):
 
     # First question
     np1 = create_np_array_for_column(4, rows1)
+    print("** question 5, survey1")
+    print("mean")
+    print(np1.mean())
+    print("std")
+    print(np1.std())
     np2 = create_np_array_for_column(4, rows2)
+    print("** question 5, survey2")
+    print("mean")
+    print(np2.mean())
+    print("std")
+    print(np2.std())
     do_test_for_groups(np1, np2)
 
     # Second question
     np1 = create_np_array_for_column(5, rows1)
+    print("** question 6, survey1")
+    print("mean")
+    print(np1.mean())
+    print("std")
+    print(np1.std())
     np2 = create_np_array_for_column(5, rows2)
+    print("** question 6, survey2")
+    print("mean")
+    print(np2.mean())
+    print("std")
+    print(np2.std())
     do_test_for_groups(np1, np2)
 
     # Third question
     np1 = create_np_array_for_column(6, rows1)
+    print("** question 7, survey1")
+    print("mean")
+    print(np1.mean())
+    print("std")
+    print(np1.std())
     np2 = create_np_array_for_column(6, rows2)
+    print("** question 7, survey2")
+    print("mean")
+    print(np2.mean())
+    print("std")
+    print(np2.std())
     do_test_for_groups(np1, np2)
 
 
